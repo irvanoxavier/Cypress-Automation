@@ -1,4 +1,5 @@
 // ***********************************************
+import loginPage from "./pageObject/Magento/loginPage"
 // This example commands.js shows you how to
 // create various custom commands and overwrite
 // existing commands.
@@ -10,7 +11,12 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (user_name, pass_word) => {
+    cy.get(loginPage.loginBtn).click()
+    cy.get(loginPage.username).clear().type(user_name)
+    cy.get(loginPage.password).clear().type(pass_word)
+    cy.get(loginPage.submitBtn).click()
+})
 //
 //
 // -- This is a child command --
